@@ -17,7 +17,6 @@ class LinkedList{
             this.listTail = node;
         } else {
             // Add the new node to the end of the list
-            // this.prevNode = this.tail;
             this.listTail.nextNode = node;
             this.listTail = node;
         }
