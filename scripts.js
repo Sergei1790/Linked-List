@@ -170,9 +170,44 @@ class LinkedList{
         if (current === null) {
             this.listTail = node;
         }
+        return node;
     }
     removeAt(index){
+        if (index === 0) {
+            const removedNode = this.listHead;
+            this.listHead = this.listHead.nextNode;
+            if (this.listHead === null) {
+                // If the list becomes empty, update the tail to be null as well
+                this.listTail = null;
+            }
+            return removedNode;
+        }
 
+        let current = this.listHead;
+        let counter = 0;
+        let previous = null;
+
+        while (current !== null && counter < index) {
+            previous = current;
+            current = current.nextNode;
+            counter++;
+        }
+        // If the index is out of range, return or handle as needed
+        if (counter !== index) {
+            console.log("Index out of range");
+            return;
+        }
+
+        // Insert the node
+
+        previous.nextNode = current.nextNode;
+
+         // If the removed node was the tail, update the tail reference
+        if (current.nextNode === null) {
+            this.listTail = previous;
+        }
+
+        return current;
     }
 }
 
@@ -210,8 +245,11 @@ console.log('toString', list.toString());
 console.log('toString Recursive', list.toStringRecursive()); 
 
 console.log('insertAt', list.insertAt('insert', 2)); 
+console.log('list', list);
+console.log('toString', list.toString()); 
+
 // console.log('insertAt Recursive', list.insertAtRecursive()); 
-// console.log('removeAt', list.removeAt(3)); 
+console.log('removeAt', list.removeAt(3)); 
 // console.log('removeAt Recursive', list.removeAtRecursive()); 
 
 console.log('list', list);
