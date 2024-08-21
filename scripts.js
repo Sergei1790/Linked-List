@@ -29,7 +29,7 @@ class LinkedList{
             this.listHead = node;
             this.listTail = node;
         } else {
-            // Add the new node to the end of the list
+            // Add the new node to the start of the list
             node.nextNode = this.listHead;
             this.listHead = node;
         }
